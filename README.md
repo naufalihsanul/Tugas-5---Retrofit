@@ -1,6 +1,6 @@
 # Tugas 5 Pemrograman Mobile - Retrofit & RecyclerView
 
-
+### Identitas Mahasiswa
 * **Nama:** Naufal Ihsanul Islam
 * **NIM:** F1D02310084
 * **Kelas:** C
@@ -17,27 +17,19 @@ Berikut adalah tampilan aplikasi saat dijalankan:
 
 ---
 
-## Checklist Kriteria Penilaian
+## Fitur & Alur Kerja Aplikasi
 
-Sesuai ketentuan tugas pada folder `Kriteria tugas`, berikut kriteria yang telah diimplementasikan:
+Aplikasi ini memiliki alur kerja dan fitur utama sebagai berikut:
 
-| No | Kriteria Penilaian | Indikator | Status |
-|:---:|:---|:---|:---:|
-| 1 | **Login API** | Aplikasi berhasil login ke endpoint `/api/login` | **Selesai** |
-| 2 | **Token Auth** | Token login dikirim pada header `Authorization: Bearer {token}` saat mengambil data pasien | **Selesai** |
-| 3 | **RecyclerView** | Data pasien tampil dalam list (bukan cuma Toast atau Logcat) | **Selesai** |
-| 4 | **Model Data** | Data class sesuai dengan struktur JSON response pasien | **Selesai** |
-| 5 | **UI dan UX** | Tampilan login dan list pasien rapi, memiliki loading/error state | **Selesai** |
-| 6 | **Repository** | Source code & screenshot lengkap tersedia di GitHub | **Selesai** |
-
----
-
-## Detail Fitur & Alur Kerja
-
-* **Halaman Login**: Validasi input kosong (email & password wajib diisi), indikator progress bar saat request, dan error toast jika login gagal.
-* **Penyimpanan Token**: Token hasil login (`data.token`) dan nama user (`data.user.name`) dikirim via intent ke halaman pasien.
-* **Request Data Pasien**: Mengirim HTTP GET request ke `/api/pasien` dengan header `Authorization` menggunakan format `Bearer {token}`.
-* **Tampilan Pasien**: Nama user ditampilkan di header penyambutan, dan data pasien (Nama, Tanggal Lahir, Jenis Kelamin, Alamat, No. Telepon) diikat ke `item_pasien.xml` menggunakan RecyclerView Adapter.
+* **Halaman Login (Autentikasi API)**:
+  * Dilengkapi validasi input (email dan password tidak boleh kosong).
+  * Indikator progress bar (loading state) saat proses login berlangsung ke REST API.
+  * Menampilkan notifikasi Toast jika login berhasil atau gagal.
+* **Manajemen Token & Sesi**:
+  * Menyimpan token hasil login (`data.token`) dan nama user (`data.user.name`), kemudian meneruskannya ke halaman data pasien menggunakan Intent.
+* **Request & Tampilan Data Pasien**:
+  * Melakukan HTTP GET request ke endpoint `/api/pasien` dengan menyertakan token pada header `Authorization` (menggunakan format `Bearer {token}`).
+  * Menampilkan data pasien secara dinamis (Nama, Tanggal Lahir, Jenis Kelamin, Alamat, dan Nomor Telepon) secara rapi menggunakan `RecyclerView` dengan layout kustom `CardView`.
 
 ---
 
